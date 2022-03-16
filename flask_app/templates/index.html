@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+
+        <div class="row">
+            <h1>Users with Games</h1>
+        </div>
+
+        <div class="row">
+            <form action="/user/process_login" method = "post">
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input class="form-control" type="text" name="email" id="email">
+                    {% for message in get_flashed_messages(category_filter=["err_users_email"]) %}
+                    <p class="alert  alert-danger">{{message}}</p>
+                    {%endfor%}
+                </div>
+                <div class="mb-3">
+                    <label for="pw">Password</label>
+                    <input class="form-control" type="text" name="pw" id="pw">
+                    {% for message in get_flashed_messages(category_filter=["err_users_pw"]) %}
+                    <p class="alert  alert-danger">{{message}}</p>
+                    {%endfor%}
+                </div>
+                <button class="btn btn-success">Login</button>
+            </form>
+        </div>
+        <p>if not already a user <a href="/user/new">click here</a></p>
+        
+
+    </div>
+{% endblock content %}

@@ -1,0 +1,52 @@
+{%extends 'base.html'%}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <h1>Register New User</h1>
+        </div>
+        <div class="row">
+            <form action="/user/create" method = "post">
+                <div class="mb-3">
+                    <label for="first_name">First Name</label>
+                    <input class="form-control" type="text" name="first_name" id="first_name">
+                    {% for message in get_flashed_messages(category_filter=["err_users_first_name"]) %}
+                    <p class="alert  alert-danger">{{message}}</p>
+                    {%endfor%}
+                </div>
+                <div class="mb-3">
+                    <label for="last_name">Last Name</label>
+                    <input class="form-control" type="text" name="last_name" id="last_name">
+                    {% for message in get_flashed_messages(category_filter=["err_users_last_name"]) %}
+                    <p class="alert  alert-danger">{{message}}</p>
+                    {%endfor%}
+                </div>
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input class="form-control" type="text" name="email" id="email">
+                    {% for message in get_flashed_messages(category_filter=["err_users_email"]) %}
+                    <p class="alert  alert-danger">{{message}}</p>
+                    {%endfor%}
+                </div>
+                <div class="mb-3">
+                    <label for="pw">Password</label>
+                    <input class="form-control" type="text" name="pw" id="pw">
+                    {% for message in get_flashed_messages(category_filter=["err_users_pw"]) %}
+                    <p class="alert  alert-danger">{{message}}</p>
+                    {%endfor%}
+                </div>
+                <div class="mb-3">
+                    <label for="confirm_pw">Confirm Password</label>
+                    <input class="form-control" type="text" name="confirm_pw" id="confirm_pw">
+                    {% for message in get_flashed_messages(category_filter=["err_users_confirm_pw"]) %}
+                    <p class="alert  alert-danger">{{message}}</p>
+                    {%endfor%}
+                </div>
+                <button class="btn btn-success">Create User</button>
+            </form>
+        </div>
+        <p>if already a user <a href="/">Login</a></p>
+        
+    </div>
+
+{% endblock content %}
